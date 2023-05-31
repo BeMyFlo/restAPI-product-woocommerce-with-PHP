@@ -1,0 +1,51 @@
+/* style.css */
+
+/* Chọn các phần tử cần tùy chỉnh và áp dụng kiểu CSS */
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+  }
+  .name-product{
+    padding:30px;
+  }
+  .mobile-img {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input[type="text"] {
+    margin-bottom: 13px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 11px;
+}
+  
+  button.login {
+    background-color: #4267B2;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button.login:hover {
+    background-color: #3b5998;
+  }
+  .Title{
+    margin-bottom: 29px;
+  }
