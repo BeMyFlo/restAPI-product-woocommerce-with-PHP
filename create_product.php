@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['name']) && isset($_PO
         'description' => $_POST['description'],
         'images' => array(
             array(
-                'src' => $_POST['link']
+                'src' => $_POST['product_link'] // Sử dụng giá trị từ product_link
             )
         )
     );
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['name']) && isset($_PO
             <input type="text" name="type" placeholder="Type">
             <input type="text" name="price" placeholder="Giá">
             <input type="text" name="description" placeholder="Mô tả">
-            <input type="text" name="link" placeholder="Link ảnh">
+            <input type="text" name="product_link" placeholder="Link ảnh" value="<?php echo $product['images'][0]['src']; ?>">
             <button class="login" type="submit">Thêm sản phẩm</button>
           </form>
           <hr>

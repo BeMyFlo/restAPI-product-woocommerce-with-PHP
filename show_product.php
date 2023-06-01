@@ -7,32 +7,22 @@ $product = null;
 // Kiểm tra xem có dữ liệu được gửi từ form hay không
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     // Lấy dữ liệu từ form
-    $product_id = $_POST['id']; // ID của sản phẩm cần xóa
-$request_url = $site_url . '/wp-json/wc/v3/products/' . $product_id;
-$auth = base64_encode($consumer_key . ':' . $consumer_secret);
+    $product_id = $_POST['id']; // ID của sản phẩm cần xem
+    $request_url = $site_url . '/wp-json/wc/v3/products/' . $product_id;
+    $auth = base64_encode($consumer_key . ':' . $consumer_secret);
 
-$headers = array(
-    'Authorization: Basic ' . $auth,
-);
+    $headers = array(
+        'Authorization: Basic ' . $auth,
+    );
 
-$ch = curl_init($request_url);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $ch = curl_init($request_url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-$response = curl_exec($ch);
-curl_close($ch);
+    $response = curl_exec($ch);
+    curl_close($ch);
 
-$product = json_decode($response, true);
-
-if (isset($product['id'])) {
-    echo 'Thông tin sản phẩm:<br>';
-    echo 'ID: ' . $product['id'] . '<br>';
-    echo 'Tên: ' . $product['name'] . '<br>';
-    echo 'Giá: ' . $product['price'] . '<br>';
-    echo 'Mô tả: ' . $product['description'] . '<br>';
-} else {
-    echo 'Có lỗi xảy ra khi lấy thông tin sản phẩm.';
-}
+    $product = json_decode($response, true);
 }
 ?>
 
@@ -45,10 +35,9 @@ if (isset($product['id'])) {
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" type="image/png" href="./img/favicon.png"/>
-    <title>Facebook</title>
+    <title>Xem sản phẩm</title>
 </head>
 <body>
-  <!-- PC -->
     <div class="box">
        <div class="mobile-img">
         <img src="./img/favicon.png" alt="">
@@ -57,10 +46,31 @@ if (isset($product['id'])) {
           <form action="" method="post">
             <h1 class="Title">XEM SẢN PHẨM</h1>
             <input type="text" name="id" placeholder="ID sản phẩm">
-            <button class="login" type="submit"></button>
+            <button class="login" type="submit">XEM</button>
           </form>
           <hr>
-          <div id="result"></div>
+          <div id="result">
+            <?php if (isset($product) && isset($product['id'])) : ?>
+                <div class="product-info">
+                    <div class="product-image">
+                      <img src="<?php echo $product['images'][0]['src']; ?>" alt="<?php echo $product['name']; ?>">
+                    </div>
+                    <div class="product-detail">    
+                      <h2><?php echo $product['name']; ?></h2>
+                      <p class="show" style="color:red">Giá:</p> <p><?php echo $product['regular_price']; ?></p>
+                      <br><p class="show" style="color:red">Mô tả: <?php echo $product['description']; ?></p>
+                    </div>
+                </div>
+                  
+                <form action="thong_tin_san_pham.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+                    <button class="login" type="submit">Sửa</button>
+                </form>
+            <?php elseif (isset($product) && !isset($product['id'])) : ?>
+                <p>Có lỗi xảy ra khi lấy thông tin sản phẩm.</p>
+            <?php endif; ?>
+          </div>
         </div>
-      </div>   
-</div>
+    </div>
+</body>
+</html>
