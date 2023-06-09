@@ -7,7 +7,7 @@ $product = null;
 // Kiểm tra xem có dữ liệu được gửi từ form hay không
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     // Lấy dữ liệu từ form
-    $product_id = $_POST['id']; // ID của sản phẩm cần xem
+    $product_id = $_GET['id']; // ID của sản phẩm cần xem
     $request_url = $site_url . '/wp-json/wc/v3/products/' . $product_id;
     $auth = base64_encode($consumer_key . ':' . $consumer_secret);
 
@@ -46,7 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
           <form action="" method="post">
             <h1 class="Title">XEM SẢN PHẨM</h1>
             <input type="text" name="id" placeholder="ID sản phẩm">
-            <button class="login" type="submit">XEM</button>
+            <div class = "login_tong">
+                <button class="login" type="submit">XEM</button>
+            </div>
           </form>
           <hr>
           <div id="result">
@@ -55,16 +57,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
                     <div class="product-image">
                       <img src="<?php echo $product['images'][0]['src']; ?>" alt="<?php echo $product['name']; ?>">
                     </div>
-                    <div class="product-detail">    
+                    <div class="product-detail">  
+                      <p><strong>ID:</strong> <?php echo $product['id']; ?></p> 
                       <h2><?php echo $product['name']; ?></h2>
                       <p class="show" style="color:red">Giá:</p> <p><?php echo $product['regular_price']; ?></p>
-                      <br><p class="show" style="color:red">Mô tả: <?php echo $product['description']; ?></p>
+                      <!-- <br><p class="show" style="color:red">Mô tả: <?php echo $product['description']; ?></p> -->
                     </div>
                 </div>
                   
                 <form action="thong_tin_san_pham.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
-                    <button class="login" type="submit">Sửa</button>
+                    <div class = "login_tong">
+                      <button class="login" type="submit">SỬA</button>
+                    </div>
                 </form>
             <?php elseif (isset($product) && !isset($product['id'])) : ?>
                 <p>Có lỗi xảy ra khi lấy thông tin sản phẩm.</p>

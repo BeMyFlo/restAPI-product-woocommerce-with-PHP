@@ -46,8 +46,11 @@
   button.login:hover {
     background-color: #3b5998;
   }
-  .Title{
+  .Title {
     margin-bottom: 29px;
+    display: flex; /* Thêm dòng này để sử dụng flexbox */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
   }
   .product-info {
     display: flex;
@@ -93,4 +96,9 @@
 }
 .success-message{
   color: green;
+}
+.login_tong{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
