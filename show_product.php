@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
                     <div class="product-detail">  
                       <p><strong>ID:</strong> <?php echo $product['id']; ?></p> 
                       <h2><?php echo $product['name']; ?></h2>
-                      <p class="show" style="color:red">Giá:</p> <p><?php echo $product['regular_price']; ?></p>
+                      <p class="show" style="color:red">Giá:</p><p><?php echo $product['regular_price']; ?></p>
                       <!-- <br><p class="show" style="color:red">Mô tả: <?php echo $product['description']; ?></p> -->
                     </div>
                 </div>

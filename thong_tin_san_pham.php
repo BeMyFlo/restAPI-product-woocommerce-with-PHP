@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
                 <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
                 <input type="text" name="product_name" placeholder="Tên sản phẩm" value="<?php echo $product['name']; ?>">
                 <input type="text" name="product_price" placeholder="Giá" value="<?php echo $product['regular_price']; ?>">
-                <input type="text" name="product_description" placeholder="Mô tả" value="<?php echo $product['description']; ?>">
+                <input type="text" name="product_description" placeholder="Mô tả">
                 <input type="text" name="product_link" placeholder="Link ảnh">
                 <button class="login" type="submit">Sửa</button>
             <?php else : ?>
