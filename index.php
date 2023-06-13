@@ -57,7 +57,7 @@
                 <li><a href="create_product.php">Tạo sản phẩm</a></li>
                 <li><a href="delete_product.php">Xóa sản phẩm</a></li>
                 <li><a href="show_all_product.php">Xem tất cả sản phẩm</a></li>
-                <li><a href="show_product.php">Xem sản phẩm</a></li>
+                <li><a href="show_san_pham.php">Xem sản phẩm</a></li>
                 <li><a href="quanly_donhang.php">Quản lý đơn hàng</a></li>
                 <li><a href="top 5.php">Top 5 sản phẩm bán chạy nhất</a></li>
             </ul>
